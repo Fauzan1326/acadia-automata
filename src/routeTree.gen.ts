@@ -10,15 +10,22 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CertificatesRouteImport } from './routes/certificates'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as EmailsRouteImport } from './routes/emails'
 import { Route as EnrollmentRouteImport } from './routes/enrollment'
+import { Route as ReviewQueueRouteImport } from './routes/review-queue'
 import { Route as StudentsRouteImport } from './routes/students'
 import { Route as SynchronizationRouteImport } from './routes/synchronization'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CertificatesRoute = CertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoursesRoute = CoursesRouteImport.update({
@@ -36,6 +43,11 @@ const EnrollmentRoute = EnrollmentRouteImport.update({
   path: '/enrollment',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewQueueRoute = ReviewQueueRouteImport.update({
+  id: '/review-queue',
+  path: '/review-queue',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudentsRoute = StudentsRouteImport.update({
   id: '/students',
   path: '/students',
@@ -49,26 +61,32 @@ const SynchronizationRoute = SynchronizationRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/certificates': typeof CertificatesRoute
   '/courses': typeof CoursesRoute
   '/emails': typeof EmailsRoute
   '/enrollment': typeof EnrollmentRoute
+  '/review-queue': typeof ReviewQueueRoute
   '/students': typeof StudentsRoute
   '/synchronization': typeof SynchronizationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/certificates': typeof CertificatesRoute
   '/courses': typeof CoursesRoute
   '/emails': typeof EmailsRoute
   '/enrollment': typeof EnrollmentRoute
+  '/review-queue': typeof ReviewQueueRoute
   '/students': typeof StudentsRoute
   '/synchronization': typeof SynchronizationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/certificates': typeof CertificatesRoute
   '/courses': typeof CoursesRoute
   '/emails': typeof EmailsRoute
   '/enrollment': typeof EnrollmentRoute
+  '/review-queue': typeof ReviewQueueRoute
   '/students': typeof StudentsRoute
   '/synchronization': typeof SynchronizationRoute
 }
@@ -76,34 +94,42 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/certificates'
     | '/courses'
     | '/emails'
     | '/enrollment'
+    | '/review-queue'
     | '/students'
     | '/synchronization'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/certificates'
     | '/courses'
     | '/emails'
     | '/enrollment'
+    | '/review-queue'
     | '/students'
     | '/synchronization'
   id:
     | '__root__'
     | '/'
+    | '/certificates'
     | '/courses'
     | '/emails'
     | '/enrollment'
+    | '/review-queue'
     | '/students'
     | '/synchronization'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CertificatesRoute: typeof CertificatesRoute
   CoursesRoute: typeof CoursesRoute
   EmailsRoute: typeof EmailsRoute
   EnrollmentRoute: typeof EnrollmentRoute
+  ReviewQueueRoute: typeof ReviewQueueRoute
   StudentsRoute: typeof StudentsRoute
   SynchronizationRoute: typeof SynchronizationRoute
 }
@@ -115,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certificates': {
+      id: '/certificates'
+      path: '/certificates'
+      fullPath: '/certificates'
+      preLoaderRoute: typeof CertificatesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/courses': {
@@ -138,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnrollmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/review-queue': {
+      id: '/review-queue'
+      path: '/review-queue'
+      fullPath: '/review-queue'
+      preLoaderRoute: typeof ReviewQueueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/students': {
       id: '/students'
       path: '/students'
@@ -157,9 +197,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CertificatesRoute: CertificatesRoute,
   CoursesRoute: CoursesRoute,
   EmailsRoute: EmailsRoute,
   EnrollmentRoute: EnrollmentRoute,
+  ReviewQueueRoute: ReviewQueueRoute,
   StudentsRoute: StudentsRoute,
   SynchronizationRoute: SynchronizationRoute,
 }
