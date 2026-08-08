@@ -90,7 +90,7 @@ export interface Certificate {
   courseId: string | null;
   studentId: string | null;
   matchState: CertificateMatchState;
-  reason?: string;
+  reason?: string | undefined;
   uploadedAt: string;
   signed: boolean;
   sent: boolean;
@@ -114,7 +114,7 @@ export interface EmailLog {
   type: EmailType;
   timestamp: string;
   status: EmailStatus;
-  errorMessage?: string;
+  errorMessage?: string | undefined;
 }
 
 export type ActivityModule =
