@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActivityLogsRouteImport } from './routes/activity-logs'
+import { Route as CertificatesRouteImport } from './routes/certificates'
+import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as EmailsRouteImport } from './routes/emails'
+import { Route as EnrollmentRouteImport } from './routes/enrollment'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as ReviewQueueRouteImport } from './routes/review-queue'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as StudentsRouteImport } from './routes/students'
+import { Route as SynchronizationRouteImport } from './routes/synchronization'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActivityLogsRoute = ActivityLogsRouteImport.update({
+  id: '/activity-logs',
+  path: '/activity-logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CertificatesRoute = CertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoursesRoute = CoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailsRoute = EmailsRouteImport.update({
+  id: '/emails',
+  path: '/emails',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnrollmentRoute = EnrollmentRouteImport.update({
+  id: '/enrollment',
+  path: '/enrollment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewQueueRoute = ReviewQueueRouteImport.update({
+  id: '/review-queue',
+  path: '/review-queue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudentsRoute = StudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SynchronizationRoute = SynchronizationRouteImport.update({
+  id: '/synchronization',
+  path: '/synchronization',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activity-logs': typeof ActivityLogsRoute
+  '/certificates': typeof CertificatesRoute
+  '/courses': typeof CoursesRoute
+  '/emails': typeof EmailsRoute
+  '/enrollment': typeof EnrollmentRoute
+  '/reports': typeof ReportsRoute
+  '/review-queue': typeof ReviewQueueRoute
+  '/settings': typeof SettingsRoute
+  '/students': typeof StudentsRoute
+  '/synchronization': typeof SynchronizationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activity-logs': typeof ActivityLogsRoute
+  '/certificates': typeof CertificatesRoute
+  '/courses': typeof CoursesRoute
+  '/emails': typeof EmailsRoute
+  '/enrollment': typeof EnrollmentRoute
+  '/reports': typeof ReportsRoute
+  '/review-queue': typeof ReviewQueueRoute
+  '/settings': typeof SettingsRoute
+  '/students': typeof StudentsRoute
+  '/synchronization': typeof SynchronizationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activity-logs': typeof ActivityLogsRoute
+  '/certificates': typeof CertificatesRoute
+  '/courses': typeof CoursesRoute
+  '/emails': typeof EmailsRoute
+  '/enrollment': typeof EnrollmentRoute
+  '/reports': typeof ReportsRoute
+  '/review-queue': typeof ReviewQueueRoute
+  '/settings': typeof SettingsRoute
+  '/students': typeof StudentsRoute
+  '/synchronization': typeof SynchronizationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/activity-logs'
+    | '/certificates'
+    | '/courses'
+    | '/emails'
+    | '/enrollment'
+    | '/reports'
+    | '/review-queue'
+    | '/settings'
+    | '/students'
+    | '/synchronization'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/activity-logs'
+    | '/certificates'
+    | '/courses'
+    | '/emails'
+    | '/enrollment'
+    | '/reports'
+    | '/review-queue'
+    | '/settings'
+    | '/students'
+    | '/synchronization'
+  id:
+    | '__root__'
+    | '/'
+    | '/activity-logs'
+    | '/certificates'
+    | '/courses'
+    | '/emails'
+    | '/enrollment'
+    | '/reports'
+    | '/review-queue'
+    | '/settings'
+    | '/students'
+    | '/synchronization'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivityLogsRoute: typeof ActivityLogsRoute
+  CertificatesRoute: typeof CertificatesRoute
+  CoursesRoute: typeof CoursesRoute
+  EmailsRoute: typeof EmailsRoute
+  EnrollmentRoute: typeof EnrollmentRoute
+  ReportsRoute: typeof ReportsRoute
+  ReviewQueueRoute: typeof ReviewQueueRoute
+  SettingsRoute: typeof SettingsRoute
+  StudentsRoute: typeof StudentsRoute
+  SynchronizationRoute: typeof SynchronizationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +182,92 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/activity-logs': {
+      id: '/activity-logs'
+      path: '/activity-logs'
+      fullPath: '/activity-logs'
+      preLoaderRoute: typeof ActivityLogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certificates': {
+      id: '/certificates'
+      path: '/certificates'
+      fullPath: '/certificates'
+      preLoaderRoute: typeof CertificatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses': {
+      id: '/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof CoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emails': {
+      id: '/emails'
+      path: '/emails'
+      fullPath: '/emails'
+      preLoaderRoute: typeof EmailsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enrollment': {
+      id: '/enrollment'
+      path: '/enrollment'
+      fullPath: '/enrollment'
+      preLoaderRoute: typeof EnrollmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/review-queue': {
+      id: '/review-queue'
+      path: '/review-queue'
+      fullPath: '/review-queue'
+      preLoaderRoute: typeof ReviewQueueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/students': {
+      id: '/students'
+      path: '/students'
+      fullPath: '/students'
+      preLoaderRoute: typeof StudentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/synchronization': {
+      id: '/synchronization'
+      path: '/synchronization'
+      fullPath: '/synchronization'
+      preLoaderRoute: typeof SynchronizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivityLogsRoute: ActivityLogsRoute,
+  CertificatesRoute: CertificatesRoute,
+  CoursesRoute: CoursesRoute,
+  EmailsRoute: EmailsRoute,
+  EnrollmentRoute: EnrollmentRoute,
+  ReportsRoute: ReportsRoute,
+  ReviewQueueRoute: ReviewQueueRoute,
+  SettingsRoute: SettingsRoute,
+  StudentsRoute: StudentsRoute,
+  SynchronizationRoute: SynchronizationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
