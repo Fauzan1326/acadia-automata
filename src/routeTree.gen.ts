@@ -11,7 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as EmailsRouteImport } from './routes/emails'
+import { Route as EnrollmentRouteImport } from './routes/enrollment'
 import { Route as StudentsRouteImport } from './routes/students'
+import { Route as SynchronizationRouteImport } from './routes/synchronization'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,40 +26,86 @@ const CoursesRoute = CoursesRouteImport.update({
   path: '/courses',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EmailsRoute = EmailsRouteImport.update({
+  id: '/emails',
+  path: '/emails',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnrollmentRoute = EnrollmentRouteImport.update({
+  id: '/enrollment',
+  path: '/enrollment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudentsRoute = StudentsRouteImport.update({
   id: '/students',
   path: '/students',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SynchronizationRoute = SynchronizationRouteImport.update({
+  id: '/synchronization',
+  path: '/synchronization',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/courses': typeof CoursesRoute
+  '/emails': typeof EmailsRoute
+  '/enrollment': typeof EnrollmentRoute
   '/students': typeof StudentsRoute
+  '/synchronization': typeof SynchronizationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/courses': typeof CoursesRoute
+  '/emails': typeof EmailsRoute
+  '/enrollment': typeof EnrollmentRoute
   '/students': typeof StudentsRoute
+  '/synchronization': typeof SynchronizationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/courses': typeof CoursesRoute
+  '/emails': typeof EmailsRoute
+  '/enrollment': typeof EnrollmentRoute
   '/students': typeof StudentsRoute
+  '/synchronization': typeof SynchronizationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/courses' | '/students'
+  fullPaths:
+    | '/'
+    | '/courses'
+    | '/emails'
+    | '/enrollment'
+    | '/students'
+    | '/synchronization'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/courses' | '/students'
-  id: '__root__' | '/' | '/courses' | '/students'
+  to:
+    | '/'
+    | '/courses'
+    | '/emails'
+    | '/enrollment'
+    | '/students'
+    | '/synchronization'
+  id:
+    | '__root__'
+    | '/'
+    | '/courses'
+    | '/emails'
+    | '/enrollment'
+    | '/students'
+    | '/synchronization'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CoursesRoute: typeof CoursesRoute
+  EmailsRoute: typeof EmailsRoute
+  EnrollmentRoute: typeof EnrollmentRoute
   StudentsRoute: typeof StudentsRoute
+  SynchronizationRoute: typeof SynchronizationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,11 +124,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/emails': {
+      id: '/emails'
+      path: '/emails'
+      fullPath: '/emails'
+      preLoaderRoute: typeof EmailsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enrollment': {
+      id: '/enrollment'
+      path: '/enrollment'
+      fullPath: '/enrollment'
+      preLoaderRoute: typeof EnrollmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/students': {
       id: '/students'
       path: '/students'
       fullPath: '/students'
       preLoaderRoute: typeof StudentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/synchronization': {
+      id: '/synchronization'
+      path: '/synchronization'
+      fullPath: '/synchronization'
+      preLoaderRoute: typeof SynchronizationRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -88,7 +158,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CoursesRoute: CoursesRoute,
+  EmailsRoute: EmailsRoute,
+  EnrollmentRoute: EnrollmentRoute,
   StudentsRoute: StudentsRoute,
+  SynchronizationRoute: SynchronizationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
