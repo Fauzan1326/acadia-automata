@@ -14,7 +14,9 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export const NAV_ITEMS = [
+type NavItem = { to: string; label: string; icon: typeof Users; exact?: boolean };
+
+export const NAV_ITEMS: NavItem[] = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/students", label: "Students", icon: Users },
   { to: "/courses", label: "Courses", icon: BookOpen },
@@ -26,7 +28,7 @@ export const NAV_ITEMS = [
   { to: "/reports", label: "Reports", icon: FileBarChart },
   { to: "/activity-logs", label: "Activity Logs", icon: Activity },
   { to: "/settings", label: "Settings", icon: Settings },
-] as const;
+];
 
 export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -38,7 +40,7 @@ export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
         return (
           <Link
             key={item.to}
-            to={item.to}
+            to={item.to as "/"}
             onClick={onNavigate}
             aria-current={active ? "page" : undefined}
             className={cn(
